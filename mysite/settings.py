@@ -1,9 +1,14 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-# Author  :   cold
-#   E-mail  :   windprog@gmail.com
-#   Date    :   14/10/1 12:21:19
-#   Desc    :   配置
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014 windpro
+
+Author  :   windpro
+E-mail  :   windprog@gmail.com
+Date    :   14-11-18
+Desc    :   配置
+"""
 """
 Django settings for mysite project.
 
@@ -16,7 +21,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-#项目根目录
+# 项目根目录
 BASE_DIR = os.path.join(os.path.dirname(__file__), '../')
 
 
@@ -24,7 +29,7 @@ BASE_DIR = os.path.join(os.path.dirname(__file__), '../')
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'tu^3doh&bqq4e00&@q0z(d$lwb_bqjc7c6#w=eht3vziqakm!k'
+SECRET_KEY = '0wijm$qzn5!p4k=j$1h_yz=z_pck)m7qw9lmkjg@%lon_3f*l9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

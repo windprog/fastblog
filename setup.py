@@ -1,10 +1,14 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-# Author  :   cold
-#   E-mail  :   windprog@gmail.com
-#   Date    :   14/10/1 12:21:19
-#   Desc    :   
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
+"""
+Copyright (c) 2014 windpro
+
+Author  :   cold
+E-mail  :   windprog@gmail.com
+Date    :   14-11-18
+Desc    :   配置
+"""
 from setuptools import setup
 
 setup(

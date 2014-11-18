@@ -1,20 +1,25 @@
-#coding=utf-8
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-#   Author  :   Windpro
-#   E-mail  :   windprog@gmail.com
-#   Date    :   14/10/1 12:21:19
-#   Desc    :  
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014 windpro
+
+Author  :   windpro
+E-mail  :   windprog@gmail.com
+Date    :   14-11-18
+Desc    :
+"""
 
 from django import template
 import urllib
 import hashlib
 from django.conf import settings
 
-register = template.Library() 
+register = template.Library()
 
 GRAVATAR_URL_PREFIX = getattr(settings, "GRAVATAR_URL_PREFIX", "http://www.gravatar.com/avatar/")
 GRAVATAR_DEFAULT_IMAGE = getattr(settings, "GRAVATAR_DEFAULT_IMAGE", "/static/img/avatar.jpg")
+
 
 class GravatarUrlNode(template.Node):
     def __init__(self, email):
@@ -30,8 +35,9 @@ class GravatarUrlNode(template.Node):
         size = 40
 
         gravatar_url = GRAVATAR_URL_PREFIX + hashlib.md5(email.lower()).hexdigest() + "?"
-        gravatar_url += urllib.urlencode({'d':default, 's':str(size)})
+        gravatar_url += urllib.urlencode({'d': default, 's': str(size)})
         return gravatar_url
+
 
 @register.tag
 def gravatar_url(parser, token):
@@ -42,10 +48,11 @@ def gravatar_url(parser, token):
 
     return GravatarUrlNode(email)
 
+
 @register.filter
-def get_gravatar(email,size=44,verify_default=False):
+def get_gravatar(email, size=44, verify_default=False):
     try:
-        gravatar_url=GRAVATAR_URL_PREFIX + hashlib.md5(email.lower()).hexdigest()+'?s=%d' %size
+        gravatar_url = GRAVATAR_URL_PREFIX + hashlib.md5(email.lower()).hexdigest() + '?s=%d' % size
         if (verify_default):
             gravatar_url += '&d=404'
             try:
@@ -53,5 +60,5 @@ def get_gravatar(email,size=44,verify_default=False):
             except urllib2.URLError, e:
                 return None
         return gravatar_url
-    except Exception,e:
+    except Exception, e:
         return ''
