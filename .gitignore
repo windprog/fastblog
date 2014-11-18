@@ -52,3 +52,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+*.sw[po]
+*.bak
+*.orig
+*~
+.project
+.pydevproject
+.idea/
+db.sqlite3
