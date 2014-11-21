@@ -1,13 +1,22 @@
-#MyBlog
+#Fastblog
 =========
-"myblog"是清凉干净的一个开源django的博客,你可以随时下载使用。
+Fastblog 是一个专注于为网络差的服务器编写的python博客，可将博客放置于国外服务器获得类似国内服务器的效果。
+
+你可以随时下载使用，部分代码参考[myblog](https://github.com/evilbinary/myblog)
 #特点
-* 兼容wordpress博客系统,数据从wordpress迁移过来毫无压力。
+* 静态文件、模板和文章内容都放置在各种cdn中保证快速访问（目前支持百度云、之后支持七牛云储存）
+* 发布文章和评论实时显示（需要模板支持，可看默认模板的实现）
+* 后台管理采用django框架
 * 支持markdown，SyntaxHighlighter语法高亮功能。
 * 支持多种数据库(sqlite、mysql等)。
-	
-	
-# 在线演示
+
+#目录结构
+> * fastblog			-- 项目文件夹
+> * * templates			-- 后台管理模板
+> * django_setting		-- django设置，一般不需要更改
+> * templates			-- 前端模板文件夹
+
+#在线演示
 * [http://codedig.com](http://codedig.com) (这里是个人[博客地址](http://codedig.com)，也就是用本开源软件搭建的。)
 * [https://github.com/evilbinary/myblog](https://github.com/evilbinary/myblog) （源码地址 ）
 
@@ -26,7 +35,7 @@
 	
 	python setup.py
 	
-然后让它自己安装，安装好后，到wsgi文件夹里面，有个叫mysite这个就是项目的路径，可以看到blog、manage.py、templates等，然后运行：
+然后让它自己安装，安装好后，到项目路径里面，可以看到fastblog、manage.py、templates等，然后运行：
 
 	python manage.py syncdb
 
@@ -35,3 +44,15 @@
 	python manage.py runserver
 	
 如果没看到错误，那就可以启动服务器了，让后打开浏览器输入:[http://localhost:8088/](http://localhost:8088/)就可以看到界面了。
+
+#Done List
+* 规划项目目标（后台django、前端全分布式静态、post部分动态、数据实时更新）
+
+#TODO
+* 重构fastblog，将所有数据变为restfull api，写好avalon同步js库，方便随时变换前端。
+* 参考[newBlog](https://github.com/BeginMan/newBlog)
+* * 编写wiki模块
+* * 七牛云储存模块
+* * [命令行发送博客文件](https://github.com/BeginMan/pytool/blob/master/spider/autoSendSaeBlog.py)
+* 添加博客文章：[tornado源码分析](https://app.yinxiang.com/view/notebook/075b8b77-cc87-417e-90db-a949b3be7b98?locale=zh_CN_ENCHINA#b=fba9a22d-0214-411f-982e-67bbe7ccb4a8&st=p&n=075b8b77-cc87-417e-90db-a949b3be7b98)
+* 添加博客文章：iptables学习笔记（参考以前的[icmp_tunnel](https://github.com/windprog/icmp-tunnel)）
