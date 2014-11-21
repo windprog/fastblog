@@ -4,9 +4,11 @@ Fastblog 是一个专注于为网络差的服务器编写的python博客，可�
 
 你可以随时下载使用，部分代码参考[myblog](https://github.com/evilbinary/myblog)
 #特点
+* 使用[appengine](https://github.com/windprog/appengine)构建api和插件体系，拒绝任何依赖保证主系统代码量少。
 * 静态文件、模板和文章内容都放置在各种cdn中保证快速访问（目前支持百度云、之后支持七牛云储存）
 * 发布文章和评论实时显示（需要模板支持，可看默认模板的实现）
 * 后台管理采用django框架
+* 以文件夹分割的插件体系，可随时删除单独插件不影响其他部分（例如你不需要七牛云储存，只需要删除fastblog/plugs/qiniudn/，django后台会同步删除菜单）。
 * 支持markdown，SyntaxHighlighter语法高亮功能。
 * 支持多种数据库(sqlite、mysql等)。
 
