@@ -225,7 +225,7 @@ class Posts(models.Model):
     def get_absolute_url(self):
         # return '/blog/article/%s'%self.id
         # return ('blog.views.article',[str(self.id)])
-        return reverse('blog.views.article', args=[str(self.id)])
+        return reverse('fastblog.views.article', args=[str(self.id)])
 
     class Meta:
         managed = db_managed
@@ -267,8 +267,8 @@ class Comments(models.Model):
 
     def get_absolute_url(self):
         return '/blog/?p=%s#comment-%s' % (self.comment_post.id, self.comment_id)
-        # return ('blog.views.article',[str(self.id)])
-        #return reverse('blog.views',args=['?p='+str(self.comment_post)] )
+        # return ('fastblog.views.article',[str(self.id)])
+        #return reverse('fastblog.views',args=['?p='+str(self.comment_post)] )
 
     class Meta:
         managed = db_managed

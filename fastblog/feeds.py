@@ -11,8 +11,8 @@ Desc    :   rss生成
 """
 
 from django.contrib.syndication.views import Feed
-from blog.models import Posts, Comments
-from blog.templatetags.myfilter import autop_filter
+from fastblog.models import Posts, Comments
+from fastblog.templatetags.myfilter import autop_filter
 
 
 class CommentsFeed(Feed):

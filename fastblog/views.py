@@ -12,7 +12,7 @@ Desc    :   view 视图
 
 from django.shortcuts import render, render_to_response
 from django.template import loader, Context, RequestContext
-from blog.models import Manager, Posts, Comments, TermTaxonomy, Terms, TermRelationships, Options, Links
+from fastblog.models import Manager, Posts, Comments, TermTaxonomy, Terms, TermRelationships, Options, Links
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, Page, EmptyPage, PageNotAnInteger
@@ -24,26 +24,12 @@ from django.core.context_processors import csrf
 from feeds import ArticlesFeed
 from util import anti_resubmit, anti_frequency
 from django.http import HttpResponseRedirect
-from blog.forms import CommentForm
+from fastblog.forms import CommentForm
 from django.views.generic import View
 from django.views.generic.base import TemplateView
 
 
 manager = Manager()
-# This is for response request
-
-class MyblogView(TemplateView):
-    template_name = "test.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(MyblogView, self).get_context_data(**kwargs)
-        context['test'] = 'test'
-        return context
-        #v=0
-        # def get(self, request, *args, **kwargs):
-        #     self.v=self.v+2
-        #     return HttpResponse('Hello, World!%d'%self.v)
-
 
 #首页
 def index(request):
@@ -320,11 +306,6 @@ def feed(request, str=''):
 def render_header(request):
     pages = Posts.objects.all().filter(post_status='publish', post_type='page').only('id', 'post_title').order_by(
         'menu_order', '-post_date')
-    # headeinfo=
-
-    # headinfo={'blogname':'',''}
-    # headinfo['blogname']='aaaa'
-    # headinfo['blogname']='bbb'
     headinfo = Manager().get_head_info()
     context = RequestContext(request, {'pages': pages, 'headeinfo': headinfo})
     return render_to_string('header.html', context)

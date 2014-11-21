@@ -10,7 +10,7 @@ Date    :   14-11-18
 Desc    :   配置
 """
 """
-Django settings for mysite project.
+Django settings for fastblog project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -20,9 +20,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os,sys
 # 项目根目录
-BASE_DIR = os.path.join(os.path.dirname(__file__), '../')
+PROJECT_PATH = os.path.join(os.path.dirname(__file__), '../')
+if PROJECT_PATH not in sys.path:
+    sys.path.append(PROJECT_PATH)
 
 
 # Quick-start development settings - unsuitable for production
@@ -51,7 +53,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'fastblog',
 
 )
 
@@ -67,9 +69,9 @@ MIDDLEWARE_CLASSES = (
 
 )
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'django_setting.urls'
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+WSGI_APPLICATION = 'django_setting.wsgi.application'
 
 
 # Database
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(PROJECT_PATH, 'db.sqlite3'),
     }
 }
 
@@ -113,18 +115,18 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../blog/templates').replace('\\', '/'),
+    os.path.join(PROJECT_PATH, 'fastblog/templates').replace('\\', '/'),
 
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'blog/static'.replace('\\', '/'))
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'fastblog/static'.replace('\\', '/'))
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "django.contrib.staticfiles.finders.FileSystemFinder",
 )
 
-MYBLOG_PATH = os.path.join(os.path.dirname(__file__), '../blog/').replace('\\', '/')
+FASTBLOG_PATH = os.path.join(PROJECT_PATH, 'fastblog/').replace('\\', '/')
 
 STATICFILES_DIRS = (
     ('css', os.path.join(STATIC_ROOT, 'css')),
@@ -137,11 +139,11 @@ STATICFILES_DIRS = (
     ('admin/img', os.path.join(STATIC_ROOT, 'admin/img')),
 
 
-    ('admin/css', os.path.join(MYBLOG_PATH, 'static/admin/css')),
-    ('admin/js', os.path.join(MYBLOG_PATH, 'static/admin/js')),
-    ('admin/js/admin', os.path.join(MYBLOG_PATH, 'static/admin/js/admin')),
+    ('admin/css', os.path.join(FASTBLOG_PATH, 'static/admin/css')),
+    ('admin/js', os.path.join(FASTBLOG_PATH, 'static/admin/js')),
+    ('admin/js/admin', os.path.join(FASTBLOG_PATH, 'static/admin/js/admin')),
 
-    ('admin/img', os.path.join(MYBLOG_PATH, 'static/admin/img')),
+    ('admin/img', os.path.join(FASTBLOG_PATH, 'static/admin/img')),
 )
 
 # print ('admin/css', os.path.join(MYBLOG_PATH, 'static/admin/css'))

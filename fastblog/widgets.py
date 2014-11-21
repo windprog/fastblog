@@ -15,7 +15,7 @@ from widgets import *
 from django.forms.widgets import *
 from django.utils.encoding import force_unicode
 from itertools import *
-from blog.models import Commentmeta, Comments, Links, Options, Postmeta
+from fastblog.models import Commentmeta, Comments, Links, Options, Postmeta
 from django.utils.html import *
 
 

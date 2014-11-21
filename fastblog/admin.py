@@ -14,8 +14,8 @@ from django.contrib import admin, auth
 from django.contrib.admin.sites import AdminSite
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django import forms
-from blog.models import Commentmeta, Comments, Links, Options, Postmeta
-from blog.models import Posts, TermRelationships, TermTaxonomy, Terms, Usermeta, Users
+from fastblog.models import Commentmeta, Comments, Links, Options, Postmeta
+from fastblog.models import Posts, TermRelationships, TermTaxonomy, Terms, Usermeta, Users
 from widgets import TreeSelect, MySelect
 from django.contrib.admin.utils import (quote, unquote, flatten_fieldsets,
                                         get_deleted_objects, model_format_dict, NestedObjects,
