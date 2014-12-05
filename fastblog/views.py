@@ -31,6 +31,7 @@ from django.views.generic.base import TemplateView
 
 manager = Manager()
 
+
 #首页
 def index(request):
     return pages(request)

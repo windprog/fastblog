@@ -22,9 +22,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os,sys
 # 项目根目录
-PROJECT_PATH = os.path.join(os.path.dirname(__file__), '../')
-if PROJECT_PATH not in sys.path:
-    sys.path.append(PROJECT_PATH)
+BASE_DIR = os.path.join(os.path.dirname(__file__), '../')
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'django_setting.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_PATH, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -115,18 +115,18 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'fastblog/templates').replace('\\', '/'),
+    os.path.join(BASE_DIR, 'fastblog/templates').replace('\\', '/'),
 
 )
 
-STATIC_ROOT = os.path.join(PROJECT_PATH, 'fastblog/static'.replace('\\', '/'))
+STATIC_ROOT = os.path.join(BASE_DIR, 'fastblog/static'.replace('\\', '/'))
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "django.contrib.staticfiles.finders.FileSystemFinder",
 )
 
-FASTBLOG_PATH = os.path.join(PROJECT_PATH, 'fastblog/').replace('\\', '/')
+FASTBLOG_PATH = os.path.join(BASE_DIR, 'fastblog/').replace('\\', '/')
 
 STATICFILES_DIRS = (
     ('css', os.path.join(STATIC_ROOT, 'css')),
