@@ -26,7 +26,7 @@ def get_api_kwargs(environ):
         api_kwargs['json'] = get_jsonp_callback_name(path_info)
     return api_kwargs
 
-
+@parse_wrapper_return
 def env_api(handler):
     # 使用这个wrapper更节省资源
     # 不生成request和response
@@ -44,9 +44,9 @@ def env_api(handler):
 
         return s_r_api(start_response=start_response, header={}, data=data, **api_kwargs)
 
-    return parse_wrapper_return(env_handler, handler)
+    return env_handler
 
-
+@parse_wrapper_return
 def req_res_api(handler):
     # 生成request, response
     def req_res_handler(request, response, environ, start_response, **kwargs):
@@ -65,7 +65,7 @@ def req_res_api(handler):
 
         return r_api(response=response, header={}, data=data, **api_kwargs)
 
-    return parse_wrapper_return(req_res_handler, handler)
+    return req_res_handler
 
 
 API_BASE_PATH = '/blogcache'

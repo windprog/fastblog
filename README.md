@@ -61,3 +61,4 @@ Fastblog 是一个专注于为网络差的服务器编写的python博客，可�
 * 添加博客文章：[tornado源码分析](https://app.yinxiang.com/view/notebook/075b8b77-cc87-417e-90db-a949b3be7b98?locale=zh_CN_ENCHINA#b=fba9a22d-0214-411f-982e-67bbe7ccb4a8&st=p&n=075b8b77-cc87-417e-90db-a949b3be7b98)
 * 添加博客文章：iptables学习笔记（参考以前的[icmp_tunnel](https://github.com/windprog/icmp-tunnel)）
 * 添加文章：ipdb使用学习笔记[pdb](http://www.cnblogs.com/dkblog/archive/2010/12/07/1980682.html)
+* 支持微信公共平台
