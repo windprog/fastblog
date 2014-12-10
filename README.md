@@ -38,6 +38,13 @@
        |--run.py            -- 运行项目
 
 
+##将要废弃的目录地址(转移代码结构)
+
+    |--fastblog
+       |--blog
+          |--templates      -- 博客模板
+
+
 ##在线演示
 * [http://codedig.com](http://codedig.com) (这里是个人[博客地址](http://codedig.com)，也就是用本开源软件搭建的。)
 * [https://github.com/windprog/fastblog](https://github.com/windprog/fastblog) （源码地址 ）

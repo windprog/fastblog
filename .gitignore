@@ -8,9 +8,5 @@ atlassian-ide-plugin.xml
 .env
 *.log
 *.sqlite3
-deploy.md
-deploy-blog-simple.yml
 env/
-conf/
-fabfile/
-log/*
+

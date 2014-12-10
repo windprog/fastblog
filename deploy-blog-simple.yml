@@ -1,0 +1,16 @@
+---
+- hosts: local  # hosts中指定
+  remote_user: windpro  # 如果和当前用户一样，则无需指定
+  tasks:
+    - name: check out fastblog
+      git: dest=~/demos/django_selfblog repo=https://github.com/windprog/fastblog
+           update=yes
+    - name: make virtualenv
+      shell: 'virtualenv ~/demos'
+    - name: install requirements
+      pip: requirements=~/demos/fastblog/requirements.txt
+           virtualenv=~/demos
+    - name: init database
+      shell: . ./bin/activate && cd fastblog/fastblog && ./init_database.sh chdir=~/demos
+    - name: run manage.py
+      shell: . ./bin/activate && cd fastblog/fastblog &&  ./run.sh chdir=~/demos
