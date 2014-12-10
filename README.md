@@ -24,17 +24,18 @@
 * 微信后台
 
 ##目录结构
->|--conf                 -- 项目相关工具配置文件
->|--fastblog             -- 项目根目录
->   |--api               -- 项目前端api相关接口
->   |--plugs             -- 插件目录
->   |--templates         -- 博客模板
->   |--blog              -- django设置
->      |--django_setting	-- django设置
->      |--...            -- 建模和相关后台模板
->   |--utils             -- 常用方法包
->   |--manage.py         -- django管理
->   |--run.py            -- 运行项目
+
+    |--conf                 -- 项目相关工具配置文件
+    |--fastblog             -- 项目根目录
+       |--api               -- 项目前端api相关接口
+       |--plugs             -- 插件目录
+       |--templates         -- 博客模板
+       |--blog              -- django设置
+          |--django_setting	-- django设置
+          |--...            -- 建模和相关后台模板
+       |--utils             -- 常用方法包
+       |--manage.py         -- django管理
+       |--run.py            -- 运行项目
 
 
 ##在线演示
@@ -52,15 +53,19 @@
 
 创建虚拟环境
 
-    virtualenv www
+    virtualenv env
 
 把项目放到www目录，cd到目录中，执行
 
-    cd www
+    cd env
     # 激活虚拟环境
     source bin/activate
     # 安装依赖包
-    pip install -r requirements.txt
+    pip install -r ../requirements.txt
+
+进入项目目录
+
+    cd ../fastblog
 
 创建数据库或表
 
