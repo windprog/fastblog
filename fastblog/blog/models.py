@@ -4,7 +4,7 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
-from .django_setting import settings
+import config
 from .utils.cache import cache_decorator
 
 STATUS = {
@@ -75,7 +75,7 @@ class Post(models.Model):
         return [tag.strip() for tag in self.tags.split(',')]
 
     def get_absolute_url(self):
-        return '%s/%s.html' % (settings.DOMAIN, self.alias)
+        return '%s/%s.html' % (config.DOMAIN, self.alias)
 
     @classmethod
     @cache_decorator(1*60)

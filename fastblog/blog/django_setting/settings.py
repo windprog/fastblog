@@ -3,6 +3,7 @@
 from os import path
 from platform import platform
 import os
+
 if 'centos' in platform():
     DEBUG = False
 else:
@@ -15,11 +16,6 @@ LOG_PATH = os.path.join(PROJECT_PATH, "../log")
 for _path in (LOG_PATH, ):
     if not os.path.exists(_path):
         os.makedirs(_path)
-
-if DEBUG:
-    DOMAIN = 'http://localhost:8000'
-else:
-    DOMAIN = 'http://www.codedig.com'
 
 
 ADMINS = (

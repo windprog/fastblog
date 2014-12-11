@@ -9,7 +9,7 @@ E-mail  :   windprog@gmail.com
 Date    :   14-12-10
 Desc    :   response相关设置函数
 """
-import json
+import ujson
 
 
 JSON_CONTENT_TYPE = "application/json; charset=utf-8"
@@ -34,7 +34,8 @@ def parse_result(result, api_kwargs):
 def s_r_api(start_response, header, data, **kwargs):
     # 使用start_response来返回json数据
     # 存在jsonp则为jsonp返回方式，值为jsonp callback方法名
-    s = json.dumps(data)
+
+    s = ujson.dumps(data)
     s = parse_result(s, kwargs)
 
     r_header = {

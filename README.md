@@ -11,7 +11,7 @@
 ##功能特点
 * 使用[appengine](https://github.com/windprog/appengine)构建api和插件体系，拒绝任何依赖保证主系统代码量少。
 * 静态文件、模板和文章内容都放置在各种cdn中保证快速访问（目前支持百度云、之后支持七牛云储存）
-* 发布文章和评论实时显示（需要模板支持，可看默认模板的实现）
+* 发布文章和评论实时显示（需要模板支持，可看默认模板的实现）,具体刷新类型请看订阅类型文档。
 * 后台管理采用django框架
 * 以文件夹分割的插件体系，可随时删除单独插件不影响其他部分（例如你不需要七牛云储存，只需要删除fastblog/plugs/qiniudn/，django后台会同时删除菜单）。
 * 支持markdown，SyntaxHighlighter语法高亮功能。
@@ -22,6 +22,11 @@
 * 集成多说的评论
 * RSS和rpc
 * 微信后台
+
+
+##接下来实现
+* 动态发布静态资源，将地址存入数据库，可在后台选择删除，想法来自[前端工程](https://app.yinxiang.com/shard/s33/sh/f2eeff73-d852-47f8-b9d7-79a4abf5d16e/41f47bfacf5a8853a0eab7a5ad61f43a)
+
 
 ##目录结构
 
@@ -53,6 +58,14 @@
 首先下载源码，可以直接点击[download](https://github.com/windprog/fastblog/archive/master.zip)，也可以在shell下输入:
 	
 	git clone https://github.com/windprog/fastblog.git
+
+安装pip：
+
+    sudo apt-get install python-pip -y
+
+httpappengine依赖gevent，先安装gevent依赖库：libevent
+
+    sudo apt-get install python-dev gcc libevent-dev -y
 
 安装virtualenv
 
@@ -98,6 +111,7 @@
 * 规划项目目标（后台django、前端全分布式静态、post部分动态、数据实时更新）
 
 #TODO
+* 增加comment模型
 * 重构fastblog，将所有数据变为http api，写好avalon前端数据实时刷新js库，方便随时变换前端。
 * 参考[newBlog](https://github.com/BeginMan/newBlog)
 * * 编写wiki模块
@@ -108,3 +122,18 @@
 * 添加博客文章：iptables学习笔记（参考以前的[icmp_tunnel](https://github.com/windprog/icmp-tunnel)）
 * 添加文章：ipdb使用学习笔记[pdb](http://www.cnblogs.com/dkblog/archive/2010/12/07/1980682.html)
 * 支持微信公共平台
+
+#插件架构
+* 采用内存数据库redis
+* 每一个子进程都保存一份当前修改尚未同步的api列表（地址，时间戳）（广播方案:redis、[pipe](http://f.dataguru.cn/thread-44651-1-1.html)）
+* * 客户端为此都带上一次访问(页面刷新或者上一次订阅api)时间戳的请求订阅api，返回该时间戳到现在所有去重订阅类型数据api地址。（js.DOMAIN有主域和缓存域列表，在每一次请求页面的时候返回）
+* * 在不同的页面类型访问有不同的订阅地址，订阅类型：
+* * * 文章详细-文章（<全文章api>）
+* * * 文章详细-评论（评论首页api，用first_id请求<id文章评论已更新列表api>）
+* * * 分类列表-首页文章
+* * * 分类列表-最新文章
+* * * 分类列表-系列文章（实际上是新增隐藏分类）
+* * * 分类列表-全站热门
+* * * 分类列表-最新评论
+* * * 首页-...(跟分类列表一样)
+* * 同步完成的api会向所有子进程广播完成信息，其他子进程删除列表对象
