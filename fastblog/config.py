@@ -13,7 +13,7 @@ DEBUG = True
 
 # 服务器监听地址。
 HOST = "0.0.0.0"
-PORT = 8000
+PORT = 8001
 
 # 需要载入的Action 模块
 ACTIONS = [

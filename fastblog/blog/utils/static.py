@@ -7,7 +7,7 @@ Copyright (c) 2014 windpro
 Author  :   windpro
 E-mail  :   windprog@gmail.com
 Date    :   14-12-11
-Desc    :   
+Desc    :   静态类，只实例化一次的类等
 """
 
 

@@ -29,7 +29,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_PATH, 'db.sqlite3'),
-    }
+    },
+    'default2': {
+        'ENGINE': 'django.db.backends.dummy',
+        'NAME': os.path.join(PROJECT_PATH, 'db.sqlite3'),
+    },
+
 }
 
 # Local time zone for this installation. Choices can be found here:

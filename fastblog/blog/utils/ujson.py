@@ -63,6 +63,8 @@ EPOCH_AWARE = datetime.datetime.fromtimestamp(0, utc)
 
 # 修改自 bson.json_util model
 #=======================================================================================================================
+
+
 def default(obj):
     if isinstance(obj, datetime.datetime):
         if obj.utcoffset() is not None:
@@ -79,7 +81,7 @@ def object_hook(dct):
         return EPOCH_AWARE + datetime.timedelta(seconds=secs)
     return dct
 #=======================================================================================================================
-
+# json可转换的数据类型
 NORMAL_TYPES = [
     int,
     datetime.datetime,
@@ -89,12 +91,22 @@ NORMAL_TYPES = [
 ]
 
 
-def dumps(obj):
-    return json.dumps(obj=obj, default=default)
+def dumps(obj, **kwargs):
+    # 代替json.dumps
+    if "default" in kwargs:
+        u_default = kwargs.get("default")
+    else:
+        u_default = default
+    return json.dumps(obj=obj, default=u_default, **kwargs)
 
 
-def loads(aJsonString):
-    return json.loads(aJsonString, object_hook=object_hook)
+def loads(aJsonString, **kwargs):
+    # 代替json.loads
+    if "object_hook" in kwargs:
+        u_object_hook = kwargs.get("object_hook")
+    else:
+        u_object_hook = object_hook
+    return json.loads(s=aJsonString, object_hook=u_object_hook, **kwargs)
 
 
 def get_jsonable_vars(obj):

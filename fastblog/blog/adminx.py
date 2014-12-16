@@ -11,8 +11,8 @@ from .utils.markup import restructuredtext
 
 class PostAdmin(object):
     search_fields = ('title', 'alias')
-    fields = ('content', 'summary', 'title', 'alias', 'tags', 'status',
-              'category', 'is_top', 'is_old', 'pub_time')
+    fields = ('title', 'content', 'summary', 'alias', 'tags', 'pub_time', 'status',
+              'category', 'is_top', 'is_old')
     list_display = ('preview', 'title', 'category', 'is_top', 'pub_time')
     list_display_links = ('title', )
 

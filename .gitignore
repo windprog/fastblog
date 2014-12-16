@@ -9,4 +9,4 @@ atlassian-ide-plugin.xml
 *.log
 *.sqlite3
 env/
-
+fastblog/blog/management/*

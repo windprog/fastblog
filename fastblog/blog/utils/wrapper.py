@@ -78,6 +78,7 @@ def __parse_handler_kwargs(des_dict, handler_args, handler_defaults, handler_kwa
 
 
 def __parse_wrapper(environ, handler, handler_args, kwargs):
+    # 各类api wrapper的集中处理函数
     if "environ" in handler_args:
         #统一加入environ
         kwargs['environ'] = environ
@@ -142,7 +143,7 @@ def env_api(handler):
 
 @parse_wrapper_return
 def req_res_api(handler):
-    # 生成request, response
+    # 这个需要生成request, response，比较耗资源
     def req_res_handler(request, response, environ, start_response, **kwargs):
         handler_args = handler.func_code.co_varnames[:handler.func_code.co_argcount]
         assert "start_response" not in handler_args

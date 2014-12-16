@@ -13,6 +13,7 @@ from static import ErrorCode
 
 
 class ApiException(Exception):
+    '''全局错误码exception，搭配ErrorCode使用'''
     def __get_message(self, error_code):
         return ErrorCode.ERROR_MESSAGE.get(error_code, u"未识别错误码")
 

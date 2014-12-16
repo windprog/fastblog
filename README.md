@@ -75,7 +75,7 @@ httpappengine依赖gevent，先安装gevent依赖库：libevent
 
     virtualenv env
 
-把项目放到www目录，cd到目录中，执行
+cd到目录env中，执行
 
     cd env
     # 激活虚拟环境
@@ -122,6 +122,8 @@ httpappengine依赖gevent，先安装gevent依赖库：libevent
 * 添加博客文章：iptables学习笔记（参考以前的[icmp_tunnel](https://github.com/windprog/icmp-tunnel)）
 * 添加文章：ipdb使用学习笔记[pdb](http://www.cnblogs.com/dkblog/archive/2010/12/07/1980682.html)
 * 支持微信公共平台
+* 继承django db，重写save方法，远程保存到mongodb
+* 完成之后requirements.txt里锁定所有依赖库版本
 
 #插件架构
 * 采用内存数据库redis
