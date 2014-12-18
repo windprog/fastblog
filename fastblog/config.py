@@ -13,7 +13,7 @@ DEBUG = True
 
 # 服务器监听地址。
 HOST = "0.0.0.0"
-PORT = 8001
+PORT = 8000
 
 # 需要载入的Action 模块
 ACTIONS = [
@@ -28,7 +28,7 @@ DJANGO_URLS = [
 ]
 
 if DEBUG:
-    DOMAIN = 'http://localhost:8000'
+    DOMAIN = 'http://localhost:%s' % PORT
 else:
     DOMAIN = 'http://www.codedig.com'
 

@@ -115,7 +115,14 @@ def __parse_wrapper(environ, handler, handler_args, kwargs):
                 "message": e.message
             }
         else:
-            raise e
+            from httpappengine import pdb_pm
+            # 采用httpappengine 默认方式处理异常
+            pdb_pm()
+            e = ApiException(ErrorCode.ERROR)
+            data = {
+                "error_code": e.error_code,
+                "message": e.message
+            }
     except ApiException, e:
         data = {
             "error_code": e.error_code,

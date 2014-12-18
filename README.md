@@ -75,7 +75,7 @@ httpappengine依赖gevent，先安装gevent依赖库：libevent
 
     virtualenv env
 
-cd到目录env中，执行
+保证硬盘有足够空间，cd到目录env中，执行
 
     cd env
     # 激活虚拟环境
@@ -114,6 +114,7 @@ cd到目录env中，执行
 * 增加comment模型
 * 重构fastblog，将所有数据变为http api，写好avalon前端数据实时刷新js库，方便随时变换前端。
 * 参考[newBlog](https://github.com/BeginMan/newBlog)
+* 参考[zhihu-python](https://github.com/egrcc/zhihu-python)api模板编写方式
 * * 编写wiki模块
 * * 七牛云储存模块
 * * [命令行发送博客文件](https://github.com/BeginMan/pytool/blob/master/spider/autoSendSaeBlog.py)

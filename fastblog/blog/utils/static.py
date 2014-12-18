@@ -36,6 +36,9 @@ class ErrorCode(object):
     ERROR_MESSAGE = {
         SUCCESS: u"Success",
         FAILED: u"Failed",
+
+        ERROR: u"服务器内部错误",
+
         WrongAccessToken: u"错误的access token",
         ParameterMiss: u"参数缺失",
         ParameterError: u"不合法的参数",
