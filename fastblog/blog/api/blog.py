@@ -12,6 +12,7 @@ Desc    :
 from ..utils.wrapper import env_api, req_res_api
 from ..utils.path import api_uri
 from ..utils.ujson import get_jsonable_vars
+import config
 
 
 def pages(query_args, query_kwargs, page_count=20, num_page=1, obj_callback=None):
@@ -88,6 +89,16 @@ def search(keyword, page_count=20, num_page=1, mark_word=False):
 #=======================================================================================================================
 
 # pages
+@api_uri('/posts/index/page:<int:num_page>.json', "GET")
+@env_api
+def index(num_page=1):
+    return {
+        'posts': pages(
+            query_args=(), query_kwargs={}, page_count=config.PAGE_COUNT, num_page=num_page
+        )
+    }
+
+
 #=======================================================================================================================
 
 @api_uri('/info/meta.json', "GET")

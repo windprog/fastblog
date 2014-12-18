@@ -34,3 +34,6 @@ else:
 
 # 这一项需要在系统设置中更改
 API_BASE_PATH = '/blogcache/api'
+
+# 博客设置
+PAGE_COUNT = 20
