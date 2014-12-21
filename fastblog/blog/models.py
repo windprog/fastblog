@@ -62,7 +62,6 @@ class Post(models.Model):
     tags = models.CharField(max_length=100, null=True, blank=True, verbose_name=u'标签', help_text=u'用英文逗号分割')
     status = models.IntegerField(default=0, choices=STATUS.items(), verbose_name=u'状态')
 
-    is_old = models.BooleanField(default=False, verbose_name=u'是否为旧数据')
     pub_time = models.DateTimeField(default=datetime.now, verbose_name=u'发布时间')
 
     create_time = models.DateTimeField(u'创建时间', auto_now_add=True, editable=True)
@@ -159,3 +158,8 @@ class Widget(models.Model):
     class Meta:
         ordering = ['rank', '-create_time']
         verbose_name_plural = verbose_name = u"侧栏组件"
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'名称', unique=True)
+    post_count = models.IntegerField(default=0, verbose_name=u'文章数')

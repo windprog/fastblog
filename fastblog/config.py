@@ -36,4 +36,9 @@ else:
 API_BASE_PATH = '/blogcache/api'
 
 # 博客设置
-PAGE_COUNT = 20
+PAGE_NUM = 20
+RECENTLY_NUM = 15
+HOT_NUM = 15
+ONE_DAY = 24*60*60
+FIF_MIN = 15 * 60
+FIVE_MIN = 5 * 60

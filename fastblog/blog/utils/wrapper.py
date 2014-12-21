@@ -25,7 +25,7 @@ def __get_query_dict(environ):
     # 处理get参数字典
     # 将只有一个元素的字典变为该元素
     query_string = environ.get("QUERY_STRING")
-    query_dict = urlparse.parse_qs(query_string)
+    query_dict = urlparse.parse_qs(query_string) if isinstance(query_string, str) else {}
     result = {}
     for name, value in query_dict.iteritems():
         result[name] = value[0] if len(value) == 1 else value

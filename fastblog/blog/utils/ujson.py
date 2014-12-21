@@ -111,8 +111,10 @@ def loads(aJsonString, **kwargs):
 
 def get_jsonable_vars(obj):
     # 获取对象中基本类型的对象字典
+
     result = {}
-    for name, value in vars(obj).iteritems():
+    # 若obj为dict 则直接遍历字典
+    for name, value in (vars(obj) if not isinstance(obj, dict) else obj).iteritems():
         if type(value) in NORMAL_TYPES:
             result[name] = value
     return result

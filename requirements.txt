@@ -8,6 +8,7 @@ Pygments==1.6
 django-debug-toolbar==0.10.2
 django-xadmin==0.5.0
 django-ipware
-httpappengine>=0.1.1
+httpappengine>=0.1.4
 wsgi_intercept>=0.8.1
+requests>=2.5.0
 mongoengine

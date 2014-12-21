@@ -231,13 +231,6 @@ RESTRUCTUREDTEXT_FILTER_SETTINGS = {
     'doctitle_xform': False,
 }
 
-PAGE_NUM = 10
-RECENTLY_NUM = 15
-HOT_NUM = 15
-ONE_DAY = 24*60*60
-FIF_MIN = 15 * 60
-FIVE_MIN = 5 * 60
-
 DUOSHUO_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
 DUOSHUO_SHORT_NAME = 'xxxxxxxx'
 

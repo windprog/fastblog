@@ -111,6 +111,7 @@ httpappengine依赖gevent，先安装gevent依赖库：libevent
 * 规划项目目标（后台django、前端全分布式静态、post部分动态、数据实时更新）
 
 #TODO
+* 用户内存有所有模板，当用户操作之后会激活模板，等待数据（进入等待动画），数据一到立刻完成渲染
 * 增加comment模型
 * 重构fastblog，将所有数据变为http api，写好avalon前端数据实时刷新js库，方便随时变换前端。
 * 参考[newBlog](https://github.com/BeginMan/newBlog)
@@ -120,11 +121,13 @@ httpappengine依赖gevent，先安装gevent依赖库：libevent
 * * [命令行发送博客文件](https://github.com/BeginMan/pytool/blob/master/spider/autoSendSaeBlog.py)
 * 参考[uliweb](https://github.com/limodou/uliweb)编写readme.md文档
 * 添加博客文章：[tornado源码分析](https://app.yinxiang.com/view/notebook/075b8b77-cc87-417e-90db-a949b3be7b98?locale=zh_CN_ENCHINA#b=fba9a22d-0214-411f-982e-67bbe7ccb4a8&st=p&n=075b8b77-cc87-417e-90db-a949b3be7b98)
+* 添加博客文章：[理解 tornado.gen](https://app.yinxiang.com/shard/s33/sh/210a376e-d4a1-443c-b4fb-a13d6f0fc1e3/2dac47b84403fc7c013b268d02fc8a8d)
 * 添加博客文章：iptables学习笔记（参考以前的[icmp_tunnel](https://github.com/windprog/icmp-tunnel)）
 * 添加文章：ipdb使用学习笔记[pdb](http://www.cnblogs.com/dkblog/archive/2010/12/07/1980682.html)
 * 支持微信公共平台
 * 继承django db，重写save方法，远程保存到mongodb
 * 完成之后requirements.txt里锁定所有依赖库版本
+* 保存别人正在读
 
 #插件架构
 * 采用内存数据库redis

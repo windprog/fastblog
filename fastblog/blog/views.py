@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from ipware.ip import get_real_ip
 
-from .django_setting.settings import PAGE_NUM, RECENTLY_NUM, HOT_NUM, FIF_MIN
+import config
 from .models import Post, Category, Page, Widget
 from .utils.cache import LRUCacheDict, cache
 
@@ -25,8 +25,8 @@ class BaseMixin(object):
         try:
             context['categories'] = Category.available_list()
             context['widgets'] = Widget.available_list()
-            context['recently_posts'] = Post.get_recently_posts(RECENTLY_NUM)
-            context['hot_posts'] = Post.get_hots_posts(HOT_NUM)
+            context['recently_posts'] = Post.get_recently_posts(config.RECENTLY_NUM)
+            context['hot_posts'] = Post.get_hots_posts(config.HOT_NUM)
             context['pages'] = Page.objects.filter(status=0)
             context['online_num'] = len(cache.get('online_ips', []))
         except Exception as e:
@@ -51,7 +51,7 @@ class IndexView(BaseMixin, ListView):
         return super(IndexView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        paginator = Paginator(self.object_list, PAGE_NUM)
+        paginator = Paginator(self.object_list, config.PAGE_NUM)
         kwargs['posts'] = paginator.page(self.cur_page)
         kwargs['query'] = self.query
         return super(IndexView, self).get_context_data(**kwargs)
@@ -146,12 +146,12 @@ class PostDetailView(BaseMixin, DetailView):
         #保存别人正在读
         lru_views = cache.get('lru_views')
         if not lru_views:
-            lru_views = LRUCacheDict(max_size=10, expiration=FIF_MIN)
+            lru_views = LRUCacheDict(max_size=10, expiration=config.FIF_MIN)
 
         if post not in lru_views.values():
             lru_views[ip] = post
 
-        cache.set('lru_views', lru_views, FIF_MIN)
+        cache.set('lru_views', lru_views, config.FIF_MIN)
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
