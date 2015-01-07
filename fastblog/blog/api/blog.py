@@ -146,8 +146,9 @@ def tags_posts(tag_name, page_index):
 @env_api
 def detail_posts(post_id):
     from ..utils.cache import cache
-    post = get_jsonable_vars(Post.objects.get(id=post_id))
-    next_id, prev_id = post.id + 1, post.id - 1
+    o_post = Post.objects.get(id=post_id)
+    post = get_jsonable_vars(o_post)
+    next_id, prev_id = o_post.id + 1, o_post.id - 1
 
     def get_post_info(_id):
         try:
@@ -161,7 +162,7 @@ def detail_posts(post_id):
 
     post['other_views'] = cache.get('lru_views', {}).items()
 
-    post['related_posts'] = post.related_posts
+    post['related_posts'] = [get_jsonable_vars(r_post) for r_post in o_post.related_posts()]
 
     return post
 

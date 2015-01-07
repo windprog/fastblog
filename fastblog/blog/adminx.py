@@ -52,7 +52,7 @@ class PostAdmin(object):
             try:
                 old_tag = Tag.objects.get(name=tag)
                 old_tag.update(post_count=F('post_count') + 1)
-            except Post.DoesNotExist:
+            except Tag.DoesNotExist:
                 ot = Tag(name=tag, post_count=1)
                 ot.save()
         for tag in cut_tag_list:

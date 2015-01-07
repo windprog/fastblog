@@ -17,10 +17,11 @@ if PROJECT_PATH not in sys.path:
     sys.path.append(PROJECT_PATH)
 # 载入用户配置
 os.environ.setdefault("APPENGINE_SETTINGS_MODULE", "config")
-from httpappengine.aetest import start_mock, AppFuncTestCase
+from httpappengine.aetest import start_mock, BaseHttpTestCase
+from httpappengine.util import get_action_uri
 
 
-class ApiTestCase(AppFuncTestCase):
+class ApiTestCase(BaseHttpTestCase):
     pass
 
 start_mock()

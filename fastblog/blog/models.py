@@ -71,6 +71,8 @@ class Post(models.Model):
         return self.title
 
     def tags_list(self):
+        if not self.tags:
+            return []
         return [tag.strip() for tag in self.tags.split(',')]
 
     def get_absolute_url(self):
